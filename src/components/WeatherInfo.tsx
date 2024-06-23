@@ -1,30 +1,37 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import React from "react";
+import { View, Text, StyleSheet, Image } from "react-native";
 
-const WeatherInfo = () => {
+const WeatherInfo = ({
+  temp,
+  weatherDesc,
+  visibility,
+  windSpeed,
+  name,
+  icon,
+}: any) => {
   return (
     <View style={styles.marginTop20}>
-      <Text style={styles.text}>The weather of Jakarta</Text>
-      <Text style={[styles.temperature, styles.marginTop20]}>15 C</Text>
+      <Text style={styles.text}>The weather of {name}</Text>
+      <Text style={[styles.temperature, styles.marginTop20]}>{temp} C</Text>
       <View style={[styles.rowContainer, styles.marginTop20]}>
         <Image
-          source={{ uri: 'https://openweathermap.org/img/w/04d.png' }}
+          source={{ uri: `https://openweathermap.org/img/w/${icon}.png` }}
           style={styles.weatherIcon}
         />
         <Text style={[styles.text, styles.bold]}>Clouds</Text>
       </View>
-      <Text style={styles.text}>overcast clouds</Text>
+      <Text style={styles.text}>{weatherDesc}</Text>
       <View style={[styles.rowContainer, styles.marginTop20]}>
         <Text style={[styles.text, styles.bold]}>Visibility :</Text>
-        <Text style={[styles.text, styles.marginLeft15]}>10 km</Text>
+        <Text style={[styles.text, styles.marginLeft15]}>{visibility} km</Text>
       </View>
       <View style={[styles.rowContainer, styles.marginTop20]}>
         <Text style={[styles.text, styles.bold]}>Wind Speed :</Text>
-        <Text style={[styles.text, styles.marginLeft15]}>10 m/s</Text>
+        <Text style={[styles.text, styles.marginLeft15]}>{windSpeed} m/s</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   marginTop20: {
@@ -34,26 +41,26 @@ const styles = StyleSheet.create({
     marginLeft: 15,
   },
   text: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 16,
   },
   bold: {
-    fontWeight: '700',
+    fontWeight: "700",
   },
   rowContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   temperature: {
-    fontWeight: '700',
+    fontWeight: "700",
     fontSize: 80,
-    textAlign: 'center',
+    textAlign: "center",
   },
   weatherIcon: {
     width: 50,
     height: 50,
   },
-})
+});
 
-export default WeatherInfo
+export default WeatherInfo;
